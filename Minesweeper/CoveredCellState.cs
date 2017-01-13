@@ -21,7 +21,8 @@ namespace Minesweeper
 
         public override void Mark()
         {
-            base.Mark();
+            Cell.IsMarked = true;
+            Cell.State = new MarkedCellState(Cell);
         }
     }
 }

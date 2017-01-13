@@ -10,11 +10,53 @@ namespace Minesweeper
     {
 
         public int Side { get; set; }
-        public Cell[,] Cells { get; set; }
-        public Game(int side)
+        public List<Cell> Cells { get; set; }
+        public int Bombs { get; set; }
+        public bool IsGameOver { get; set; }
+        public Game(int side, int bombs)
         {
             Side = side;
-            Cells = new Cell[side, side];
+            Bombs = bombs;
+            Cells = new List<Cell>();
+            IsGameOver = false;
+
+            for (int i = 1; i <= side; i++)
+            {
+                for (int j = 1; j <= side; j++)
+                {
+                    Cells.Add(new Cell(i,j));
+                }
+            }
+        }
+
+
+        public Cell FindCell(int x, int y)
+        {
+            return Cells.FirstOrDefault(s => s.X == x && s.Y == y);
+        }
+
+
+        public List<Cell> BombsCells()
+        {
+            return Cells.Where(s => s.IsBomb).ToList();
+        }
+
+        public List<Cell> NeighborsCell(Cell cell)
+        {
+            var leftNeighborCoords = cell.X == 1 ? 1 : cell.X - 1;
+            var rightNeighborCoords = cell.X == Side ? Side : cell.X + 1;
+            var upNeighborCoords = cell.Y == 1 ? 1 : cell.Y - 1;
+            var bottomNeighborCoords = cell.Y == Side ? Side : cell.Y + 1;
+
+            return Cells.Where(s => s != cell
+                            && s.X >= leftNeighborCoords && s.X <= rightNeighborCoords
+                            && s.Y >= upNeighborCoords && s.Y <= bottomNeighborCoords
+                            ).ToList();
+        }
+
+        public List<Cell> NullCell()
+        {
+            return Cells.Where(s => s.Content == null).ToList();
         }
     }
 }

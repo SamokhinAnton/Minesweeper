@@ -15,7 +15,8 @@ namespace Minesweeper
 
         public override void Unmark()
         {
-            base.Unmark();
+            Cell.IsMarked = true;
+            Cell.State = new CoveredCellState(Cell);
         }
     }
 }
