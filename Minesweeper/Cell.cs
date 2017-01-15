@@ -12,7 +12,7 @@ namespace Minesweeper
         public int Y { get; set; }
         public IContent Content { get; set; }
         public IState State { get; set; }
-        public bool IsUncovered { get; set; }
+        public bool IsUncovered { get; set; } = true;
         public bool IsBomb { get; set; }
         public bool IsMarked { get; set; }
 

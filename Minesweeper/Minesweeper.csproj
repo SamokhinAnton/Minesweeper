@@ -49,7 +49,8 @@
     <Compile Include="CoveredCellState.cs" />
     <Compile Include="Blank.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="GameInicialization.cs" />
+    <Compile Include="GameField.cs" />
+    <Compile Include="GameInitialation.cs" />
     <Compile Include="IContent.cs" />
     <Compile Include="IState.cs" />
     <Compile Include="MarkedCellState.cs" />

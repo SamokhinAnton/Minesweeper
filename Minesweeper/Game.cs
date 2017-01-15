@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Minesweeper
 {
-    class Game
+    public class Game
     {
 
         public int Side { get; set; }
         public List<Cell> Cells { get; set; }
         public int Bombs { get; set; }
         public bool IsGameOver { get; set; }
+        public GameInitialation Initializetion { get; set; }
         public Game(int side, int bombs)
         {
             Side = side;
@@ -24,17 +25,37 @@ namespace Minesweeper
             {
                 for (int j = 1; j <= side; j++)
                 {
-                    Cells.Add(new Cell(i,j));
+                    Cells.Add(new Cell(i, j));
                 }
             }
-        }
 
+            Initializetion = new GameInitialation(this);
+        }
 
         public Cell FindCell(int x, int y)
         {
             return Cells.FirstOrDefault(s => s.X == x && s.Y == y);
         }
 
+        public void Uncover(int x, int y)
+        {
+            FindCell(x, y).Uncover();
+        }
+
+        public void Mark(int x, int y)
+        {
+            FindCell(x, y).Mark();
+        }
+
+        public void Unmark(int x, int y)
+        {
+            FindCell(x, y).Unmark();
+        }
+
+        public void End(int x, int y)
+        {
+            IsGameOver = true;
+        }
 
         public List<Cell> BombsCells()
         {

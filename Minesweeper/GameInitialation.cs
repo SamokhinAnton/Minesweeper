@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace Minesweeper
 {
-    public class GameInicialization
+    public class GameInitialation
     {
+
         private Game Game;
+
+        public GameInitialation(Game game)
+        {
+            Game = game;
+            InitializeBombs();
+            InitializeNumbers();
+            InitializeBlank();
+        }
+
         private void InitializeBombs()
         {
             var random = new Random();
@@ -16,9 +26,15 @@ namespace Minesweeper
             foreach (var bomb in bombs)
             {
                 bomb.Content = new Bomb();
+                bomb.IsBomb = true;
             }
         }
 
+        public void Uncover(int x, int y)
+        {
+            Game.Uncover(x, y);
+        }
+        
         private void InitializeNumbers()
         {
             var numberCells = Game.BombsCells().SelectMany(b => Game.NeighborsCell(b).Where(n => !n.IsBomb));
@@ -30,10 +46,11 @@ namespace Minesweeper
 
         private void InitializeNumber(Cell cell)
         {
-            if(cell.Content == null)
+            if (cell.Content == null)
             {
                 cell.Content = new Number() { Value = 1 };
-            } else
+            }
+            else
             {
                 var num = (Number)cell.Content;
                 num.Increase();
