@@ -25,7 +25,7 @@ namespace Minesweeper
             var bombs = Game.Cells.OrderBy(s => random.Next(Game.Cells.Count - 1)).Take(Game.Bombs);
             foreach (var bomb in bombs)
             {
-                bomb.Content = new Bomb(Game.End());
+                bomb.Content = new Bomb(Game.End);
             }
         }
 

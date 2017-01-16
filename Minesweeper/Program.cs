@@ -11,8 +11,8 @@ namespace Minesweeper
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.Unicode;
-            var side = 10;
-            var bombs = 10;
+            var side = 30;
+            var bombs = 30;
             var view = new GameView(new Game(side, bombs));
             view.Start();
             

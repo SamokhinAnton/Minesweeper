@@ -8,7 +8,6 @@ namespace Minesweeper
 {
     public class Game
     {
-
         public int Side { get; set; }
         public List<Cell> Cells { get; set; }
         public int Bombs { get; set; }
