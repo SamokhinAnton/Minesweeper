@@ -15,8 +15,16 @@ namespace Minesweeper
 
         public override void Unmark()
         {
-            Cell.IsMarked = true;
+            Cell.IsMarked = false;
             Cell.State = new CoveredCellState(Cell);
+        }
+
+        public override char View
+        {
+            get
+            {
+                return (char)0x0489;
+            }
         }
     }
 }

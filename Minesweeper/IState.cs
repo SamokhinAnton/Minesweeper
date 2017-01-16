@@ -13,5 +13,7 @@ namespace Minesweeper
         void Mark();
 
         void Unmark();
+
+        char View { get; }
     }
 }

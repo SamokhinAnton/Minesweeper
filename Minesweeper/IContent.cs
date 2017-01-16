@@ -11,5 +11,7 @@ namespace Minesweeper
         void Uncover();
 
         bool IsBomb { get; }
+
+        char View { get; }
     }
 }

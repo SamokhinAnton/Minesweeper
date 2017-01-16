@@ -10,6 +10,14 @@ namespace Minesweeper
     {
         protected Cell Cell;
 
+        public virtual char View
+        {
+            get
+            {
+                return ' ';
+            }
+        }
+
         public CellState(Cell cell)
         {
             Cell = cell;

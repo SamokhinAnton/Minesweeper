@@ -24,5 +24,13 @@ namespace Minesweeper
             Cell.IsMarked = true;
             Cell.State = new MarkedCellState(Cell);
         }
+
+        public override char View
+        {
+            get
+            {
+                return (char)0x2592;
+            }
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace Minesweeper
         public List<Cell> Cells { get; set; }
         public int Bombs { get; set; }
         public bool IsGameOver { get; set; }
-        public GameInitialation Initializetion { get; set; }
+        public GameInit Initializetion { get; set; }
         public Game(int side, int bombs)
         {
             Side = side;
@@ -29,7 +29,7 @@ namespace Minesweeper
                 }
             }
 
-            Initializetion = new GameInitialation(this);
+            Initializetion = new GameInit(this);
         }
 
         public Cell FindCell(int x, int y)
@@ -52,7 +52,7 @@ namespace Minesweeper
             FindCell(x, y).Unmark();
         }
 
-        public void End(int x, int y)
+        public void End()
         {
             IsGameOver = true;
         }

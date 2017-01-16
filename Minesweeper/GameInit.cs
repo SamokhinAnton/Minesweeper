@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Minesweeper
 {
-    public class GameInitialation
+    public class GameInit
     {
 
         private Game Game;
 
-        public GameInitialation(Game game)
+        public GameInit(Game game)
         {
             Game = game;
             InitializeBombs();
@@ -25,8 +25,7 @@ namespace Minesweeper
             var bombs = Game.Cells.OrderBy(s => random.Next(Game.Cells.Count - 1)).Take(Game.Bombs);
             foreach (var bomb in bombs)
             {
-                bomb.Content = new Bomb();
-                bomb.IsBomb = true;
+                bomb.Content = new Bomb(Game.End());
             }
         }
 
@@ -62,7 +61,8 @@ namespace Minesweeper
             var nullCells = Game.NullCell();
             foreach (var item in nullCells)
             {
-                item.Content = new Blank();
+                var neighbors = Game.NeighborsCell(item);
+                item.Content = new Blank(neighbors);
             }
         }
     }

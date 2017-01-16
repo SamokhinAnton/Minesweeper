@@ -10,10 +10,11 @@ namespace Minesweeper
     {
         static void Main(string[] args)
         {
-            var side = 30;
-            var bombs = 30;
-            var view = new GameField(new Game(side, bombs));
-
+            Console.OutputEncoding = Encoding.Unicode;
+            var side = 10;
+            var bombs = 10;
+            var view = new GameView(new Game(side, bombs));
+            view.Start();
             
 
             //Console.ForegroundColor = ConsoleColor.Blue;
