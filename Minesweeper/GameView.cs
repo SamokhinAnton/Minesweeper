@@ -45,6 +45,7 @@ namespace Minesweeper
                 Console.Write(h);
             }
             Console.Write(c3);
+            DrowControl();
             Console.ResetColor();
         }
 
@@ -123,6 +124,15 @@ namespace Minesweeper
             Console.ResetColor();
         }
 
+        public void DrowControl()
+        {
+            Console.SetCursorPosition(0, Game.Side+3);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("<U> - Uncover");
+            Console.WriteLine("<M> - Marc");
+            Console.WriteLine("<N> - Unmark");
+        }
+
         public void Drow()
         {
             Console.Clear();
@@ -130,6 +140,7 @@ namespace Minesweeper
             DrawCells();
             Console.SetCursorPosition(1, 1);
         }
+
 
         public void Start()
         {
@@ -143,16 +154,20 @@ namespace Minesweeper
                 switch (key.Key)
                 {
                     case ConsoleKey.DownArrow:
-                        Console.SetCursorPosition(xPos, yPos += 1);
+                        if(yPos < Game.Side)
+                            Console.SetCursorPosition(xPos, yPos += 1);
                         break;
                     case ConsoleKey.UpArrow:
-                        Console.SetCursorPosition(xPos, yPos -= 1);
+                        if(yPos > 1)
+                            Console.SetCursorPosition(xPos, yPos -= 1);
                         break;
                     case ConsoleKey.RightArrow:
-                        Console.SetCursorPosition(xPos += 1, yPos);
+                        if(xPos < Game.Side)
+                            Console.SetCursorPosition(xPos += 1, yPos);
                         break;
                     case ConsoleKey.LeftArrow:
-                        Console.SetCursorPosition(xPos -= 1, yPos);
+                        if(xPos > 1)
+                            Console.SetCursorPosition(xPos -= 1, yPos);
                         break;
                     case ConsoleKey.U:
                         Game.Uncover(xPos, yPos);

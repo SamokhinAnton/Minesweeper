@@ -13,6 +13,7 @@ namespace Minesweeper
         public int Bombs { get; set; }
         public bool IsGameOver { get; set; }
         public GameInit Initializetion { get; set; }
+        public GameView View { get; set; }
         public Game(int side, int bombs)
         {
             Side = side;
@@ -29,6 +30,7 @@ namespace Minesweeper
             }
 
             Initializetion = new GameInit(this);
+            View = new GameView(this);
         }
 
         public Cell FindCell(int x, int y)
@@ -53,6 +55,10 @@ namespace Minesweeper
 
         public void End()
         {
+            foreach (var bomb in BombsCells())
+            {
+                bomb.Uncover();
+            }
             IsGameOver = true;
         }
 
@@ -77,6 +83,12 @@ namespace Minesweeper
         public List<Cell> NullCell()
         {
             return Cells.Where(s => s.Content == null).ToList();
+        }
+
+        public void Start()
+        {
+            Initializetion.Init();
+            View.Start();
         }
     }
 }

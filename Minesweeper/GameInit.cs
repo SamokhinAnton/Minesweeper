@@ -14,6 +14,10 @@ namespace Minesweeper
         public GameInit(Game game)
         {
             Game = game;
+        }
+
+        public void Init()
+        {
             InitializeBombs();
             InitializeNumbers();
             InitializeBlank();
