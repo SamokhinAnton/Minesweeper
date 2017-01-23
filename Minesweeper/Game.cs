@@ -41,6 +41,11 @@ namespace Minesweeper
         public void Uncover(int x, int y)
         {
             FindCell(x, y).Uncover();
+            var covered = Cells.Count(c => !c.IsUncovered || c.IsMarked);
+            if (Bombs == covered)
+            {
+                Win();
+            }
         }
 
         public void Mark(int x, int y)
@@ -60,6 +65,7 @@ namespace Minesweeper
                 bomb.Uncover();
             }
             IsGameOver = true;
+            
         }
 
         public List<Cell> BombsCells()
@@ -89,6 +95,11 @@ namespace Minesweeper
         {
             Initializetion.Init();
             View.Start();
+        }
+
+        public void Win()
+        {
+            IsGameOver = true;
         }
     }
 }
