@@ -11,12 +11,6 @@ namespace Minesweeper
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.Unicode;
-            //var side = 30;
-            //var bombs = 30;
-            //Console.WindowWidth = side + 2;
-            //Console.WindowHeight = side + 10;
-            //var game = new Game(side, bombs);
-            //game.Start();
             GameMenu.Menu();
         }
     }

@@ -17,7 +17,7 @@ namespace Minesweeper
                 case 1:
                     return ConsoleColor.Gray;
                 case 2:
-                    return ConsoleColor.Cyan;
+                    return ConsoleColor.Blue;
                 case 3:
                     return ConsoleColor.DarkCyan;
                 default:

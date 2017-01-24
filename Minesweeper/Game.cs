@@ -14,13 +14,14 @@ namespace Minesweeper
         public bool IsGameOver { get; set; }
         public GameInit Initializetion { get; set; }
         public GameView View { get; set; }
+        public bool IsWin {get;set;}
         public Game(int side, int bombs)
         {
             Side = side;
             Bombs = bombs;
             Cells = new List<Cell>();
             IsGameOver = false;
-
+            IsWin = false;
             for (int i = 1; i <= side; i++)
             {
                 for (int j = 1; j <= side; j++)
@@ -99,6 +100,7 @@ namespace Minesweeper
 
         public void Win()
         {
+            IsWin = true;
             IsGameOver = true;
         }
     }

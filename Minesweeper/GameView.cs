@@ -141,6 +141,23 @@ namespace Minesweeper
             Console.SetCursorPosition(1, 1);
         }
 
+        public void DrowWinMsg()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.SetCursorPosition(5, Game.Side + 2);
+            Console.WriteLine("You win");
+            Console.ResetColor();
+            Console.SetCursorPosition(0, 0);
+        }
+        public void DrowLoseMsg()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(5, Game.Side + 2);
+            Console.WriteLine("You lose");
+            Console.ResetColor();
+            Console.SetCursorPosition(0, 0);
+        }
+
 
         public void Start()
         {
@@ -184,6 +201,13 @@ namespace Minesweeper
                     default:
                         break;
                 }
+            }
+            if (Game.IsWin)
+            {
+                DrowWinMsg();
+            } else
+            {
+                DrowLoseMsg();
             }
         }
     }
