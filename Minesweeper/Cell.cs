@@ -20,6 +20,7 @@ namespace Minesweeper
                 return Content != null && Content.IsBomb;
             }
         }
+
         public bool IsMarked { get; set; }
 
         public Cell(int x, int y)
@@ -28,6 +29,7 @@ namespace Minesweeper
             Y = y;
             State = new CoveredCellState(this);
         }
+
         public void Uncover()
         {
             State.Uncover();

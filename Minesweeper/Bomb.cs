@@ -13,6 +13,7 @@ namespace Minesweeper
         {
             End = endGame;
         }
+
         public bool IsBomb
         {
             get
@@ -20,6 +21,7 @@ namespace Minesweeper
                 return true;
             }
         }
+
         public char View
         {
             get

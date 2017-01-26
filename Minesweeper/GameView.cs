@@ -149,6 +149,7 @@ namespace Minesweeper
             Console.ResetColor();
             Console.SetCursorPosition(0, 0);
         }
+
         public void DrowLoseMsg()
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -157,7 +158,6 @@ namespace Minesweeper
             Console.ResetColor();
             Console.SetCursorPosition(0, 0);
         }
-
 
         public void Start()
         {
